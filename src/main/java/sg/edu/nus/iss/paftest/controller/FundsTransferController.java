@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,6 +51,9 @@ public class FundsTransferController {
         
         t.setSameAccount(t.checkForAccounts(t.getFromAccountId(), t.getToAccountId()));  
         if(t.getSameAccount() == true){
+            ObjectError err = new ObjectError("sameAccountError", 
+            "Cannot be the same account");
+            bResult.addError(err);
             return "index";
         }
 
@@ -57,6 +61,9 @@ public class FundsTransferController {
         Account b = ftSvc.findById(t.getToAccountId());
         t.setSuffBalance(t.sufficientBalance(a.getBalance(), t.getAmount()));
         if(t.getSuffBalance() == false){
+            ObjectError err2 = new ObjectError("balanceNotEnough", 
+            "Must have sufficient balance to transfer");
+            bResult.addError(err2);
             return "index";
         }
         

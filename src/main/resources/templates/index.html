@@ -55,11 +55,28 @@
             
         </table>
          <!-- <input type="hidden" name="ch" data-th-value="${game.gid}"> -->
-        <span class="error" data-th-if="${#fields.hasErrors('amount')}" data-th-errors="*{amount}" size="50"></span>
+        <!-- <span class="error" data-th-if="${#fields.hasErrors('amount')}" data-th-errors="*{amount}" size="50"></span>
         <span class="error" data-th-if="${#fields.hasErrors('fromAccountId')}" data-th-errors="*{fromAccountId}" size="50"></span>
         <span class="error" data-th-if="${#fields.hasErrors('toAccountId')}" data-th-errors="*{toAccountId}" size="50"></span>
         <span class="error" data-th-if="${#fields.hasErrors('sameAccount')}" data-th-errors="*{sameAccount}" size="50"></span>
-        <span class="error" data-th-if="${#fields.hasErrors('suffBalance')}" data-th-errors="*{suffBalance}" size="50"></span>
+        <span class="error" data-th-if="${#fields.hasErrors('suffBalance')}" data-th-errors="*{suffBalance}" size="50"></span> -->
+        
+        <div data-th-if="${#fields.hasErrors('*')}">
+            <p 
+            class="error"
+            data-th-each="err: ${#fields.errors('*')}"
+            data-th-text="${err}" 
+            ></p>
+        </div>
+
+        <!-- Lecture 13 -->
+        <!-- <div data-th-if="${#fields.hasErrors('*')}">
+            <p
+              style="color: tomato"
+              data-th-each="err: ${#fields.errors('*')}"
+              data-th-text="${err}"
+            ></p>
+          </div> -->
     </form>
 </body>
 </html>

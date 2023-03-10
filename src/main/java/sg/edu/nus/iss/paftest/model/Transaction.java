@@ -27,14 +27,14 @@ public class Transaction implements Serializable{
     @NotNull(message="Account should exist")
     private String toAccountId;
 
-    @AssertFalse(message="Transaction should consists of 2 different accounts")
+    // @AssertFalse(message="Transaction should consists of 2 different accounts")
     private Boolean sameAccount;
 
     @Positive(message="Amount should be positive")
     @Min(value=10, message="Minimum transfer amount is $10")
     private Double amount;
 
-    @AssertTrue(message="Balance should be greater than transfer amount")
+    // @AssertTrue(message="Balance should be greater than transfer amount")
     private Boolean suffBalance;
 
     private String comments;
