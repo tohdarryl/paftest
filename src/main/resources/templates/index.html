@@ -18,6 +18,9 @@
             <tr>
                 <td>From account:</td>
                 <td>
+                    <!-- data-th-field: Java Object attribute to assign input value to
+                            data-th-value: user inputted value
+                            data-th-text: text appearing on .html/webpage -->
                     <select data-th-field="*{fromAccountId}" required>
                         <option data-th-each="acc : ${accounts}" data-th-value="${acc.accountId}" 
                         data-th-text="${acc.name} + ' ('+ ${acc.accountId} + ')'"></option>
